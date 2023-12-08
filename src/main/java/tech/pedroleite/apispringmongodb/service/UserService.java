@@ -1,4 +1,4 @@
-package tech.pedroleite.apispringmongodb.services;
+package tech.pedroleite.apispringmongodb.service;
 
 import org.springframework.stereotype.Service;
 import tech.pedroleite.apispringmongodb.domain.User;
@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private UserRepository repo;
+    private final UserRepository repo;
 
     public UserService(UserRepository repo) {
         this.repo = repo;
