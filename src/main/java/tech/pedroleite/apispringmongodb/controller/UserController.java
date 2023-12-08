@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tech.pedroleite.apispringmongodb.domain.User;
+import tech.pedroleite.apispringmongodb.dto.UserDTO;
 import tech.pedroleite.apispringmongodb.service.UserService;
 
 import java.util.List;
@@ -20,8 +21,9 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
+    public ResponseEntity<List<UserDTO>> findAll() {
         List<User> list = service.findAll();
-        return ResponseEntity.ok().body(list);
+        List<UserDTO> listDto = list.stream().map(UserDTO::new).toList();
+        return ResponseEntity.ok().body(listDto);
     }
 }
